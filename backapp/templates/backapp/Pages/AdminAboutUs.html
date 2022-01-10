@@ -1,0 +1,12 @@
+{% extends 'backbase.html' %}
+{% block content %}
+<H2>Manage - About Us</H2>
+
+<form action="{% url 'AdminAboutUs' %}" method="POST">
+{% csrf_token %}   
+   <div class="mb-3">
+     <button type="submit" class="btn btn-primary my-1 text-white">Save And Publish</button>
+     <textarea class="form-control" name="pageContent" id="your_summernote" rows="10">{{IPC.pageContent}}</textarea>
+   </div>
+</form>
+{% endblock content %}

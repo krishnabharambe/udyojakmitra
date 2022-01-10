@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if IPC %}
+    <div class="my-3">
+    {{IPC.pageContent|safe}}
+    </div>
+    {% else %}
+    <p>No Content Found</p>
+    {% endif %}
+{% endblock content %}

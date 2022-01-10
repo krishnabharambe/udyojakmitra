@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if ADocuments %}
+    <div class="my-3">
+    <h2>Documents</h2>
+
+    <table class="table table-striped table-bordered table-inverse table-responsive">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Sr.No</th>
+                <th>Title</th>
+                <th>View/Path</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doc in ADocuments %}
+            <tr>
+                <td scope="row">{{forloop.counter}}</td>
+                <td>{{doc.title}}</td>
+                <td><a href="{{rootUrl}}{{doc.document4.url}}">View</a></td>
+                
+            </tr>
+    
+            {% endfor %}
+    
+        </tbody>
+    </table>
+
+    </div>
+    {% else %}
+    <p>No Content Found</p>
+    {% endif %}
+{% endblock content %}
