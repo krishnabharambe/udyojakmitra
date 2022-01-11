@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="my-3">
+    <H2>Advertisements</H2>
+</div>
+{% if msa %}
+{% for ms in msa %}
+{% if forloop.counter|divisibleby:2 %}
+<div class="my-3">
+    <div class="row featurette">
+        <div class="col-md-7">
+           <a href="{% url 'IndexAdvertisements' id=ms.id %}"><h2 class="featurette-heading">{{ms.title}}</h2></a> 
+            <p class="lead">{{ms.pageContent|safe}}</p>
+        </div>
+        <div class="col-md-5">
+            <img class="img-fluid" src="{{rootUrl}}{{ms.image.url}}" alt="New York">
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="my-3">
+    <div class="row featurette">
+        <div class="col-md-5">
+            <img class="img-fluid" src="{{rootUrl}}{{ms.image.url}}" alt="New York">
+        </div>
+        <div class="col-md-7">
+            <a href="{% url 'IndexAdvertisements' id=ms.id %}"> <h2 class="featurette-heading">{{ms.title}}</h2></a>
+            <p class="lead">{{ms.pageContent|safe}}</p>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+{% else %}
+<p>No Content Found</p>
+{% endif %}
+{% endblock content %}

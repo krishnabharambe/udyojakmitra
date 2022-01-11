@@ -54,13 +54,13 @@
             </div><!-- end dropdown items -->
           </div><!-- end dropdown menu -->
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'Documents' %}">Documents</a>
+            <a class="nav-link {% if Documents == 'Documents' %} active{% endif %}" href="{% url 'Documents' %}">Documents</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Advertisements</a>
+            <a class="nav-link {% if Advertisements == 'Advertisements' %} active{% endif %}" href="{% url 'Advertisements' %}">Advertisements</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Schemes</a>
+            <a class="nav-link {% if Schemes == 'Schemes' %} active{% endif %}"  href="{% url 'Schemes' %}">Schemes</a>
           </li>
           <div class="dropdown">
             <!-- begin dropdown menu -->

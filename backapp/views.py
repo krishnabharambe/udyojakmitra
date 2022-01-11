@@ -56,7 +56,52 @@ def appSchemes(request):
             if 'document4' in request.FILES:
                 msa.document4 = request.FILES['document4']
             msa.save()
-            return redirect(appSchemes)
+            return redirect('appSchemes')
+        if 'EditScheme' in request.POST:
+            ms = M_Schemes.objects.get(id=request.POST['schemeID'])
+            ms.title = request.POST['title']
+            ms.pageContent = request.POST['pageContent']
+            if 'image' in request.FILES:
+                ms.image = request.FILES['image']
+            if 'document4' in request.FILES:
+                ms.document4 =request.FILES['document4']
+            ms.save()
+            return redirect('appSchemes')
+        if 'deleteScheme' in request.POST:
+            ms = M_Schemes.objects.get(id=request.POST['schemeID'])
+            ms.delete()
+            return redirect('appSchemes')
+
     else:
-        return render(request, 'backapp/Pages/appSchemes.html',{"rootUrl":rootUrl})
-    
+        return render(request, 'backapp/Pages/appSchemes.html',{"rootUrl":rootUrl,'ASchemes':ASchemes})
+
+
+def appAdvertisements(request):
+    AAdvertisements = M_Advertisements.objects.all()
+    if request.method == "POST":
+        if 'addAdvertisement' in request.POST:
+            msa = M_Advertisements()
+            msa.title = request.POST['title']
+            msa.image = request.FILES['image']
+            msa.pageContent = request.POST['pageContent']
+            if 'document4' in request.FILES:
+                msa.document4 = request.FILES['document4']
+            msa.save()
+            return redirect('appAdvertisements')
+        if 'EditAdvertisement' in request.POST:
+            ms = M_Advertisements.objects.get(id=request.POST['AdvertisementID'])
+            ms.title = request.POST['title']
+            ms.pageContent = request.POST['pageContent']
+            if 'image' in request.FILES:
+                ms.image = request.FILES['image']
+            if 'document4' in request.FILES:
+                ms.document4 =request.FILES['document4']
+            ms.save()
+            return redirect('appAdvertisements')
+        if 'deleteAdvertisement' in request.POST:
+            ms = M_Advertisements.objects.get(id=request.POST['AdvertisementID'])
+            ms.delete()
+            return redirect('appAdvertisements')
+
+    else:
+        return render(request, 'backapp/Pages/appAdvertisements.html',{"rootUrl":rootUrl,'AAdvertisements':AAdvertisements})

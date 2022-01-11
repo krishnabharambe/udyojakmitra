@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import ImageSlider, IndiPageContent, appDocuments as M_appDocuments
+from .models import ImageSlider, IndiPageContent, appDocuments as M_appDocuments, Advertisements as M_Advertisements, Schemes as M_Schemes
 # Create your views here.
 rootUrl = "http://127.0.0.1:8000"
 
@@ -19,15 +19,25 @@ def Regional_List(request):
 
 def Documents(request):
     ADocuments = M_appDocuments.objects.all()
-    context={'ADocuments':ADocuments,"rootUrl":rootUrl}
+    context={'ADocuments':ADocuments,"rootUrl":rootUrl,'Documents':'Documents'}
     return render(request,"app/Documents.html",context)
 
+def IndexAdvertisements(request, id):
+    ms = M_Advertisements.objects.get(id=id)
+    return render(request, 'app/PageView.html',{"rootUrl":rootUrl,'ms':ms,'Advertisements':'Advertisements'})
+
 def Advertisements(request):
-    context={}
+    msa = M_Advertisements.objects.all()
+    context={'msa':msa,'rootUrl':rootUrl,'Advertisements':'Advertisements'}
     return render(request,"app/Advertisements.html",context)
 
+def IndexSchemes(request, id):
+    ms = M_Schemes.objects.get(id=id)
+    return render(request, 'app/PageView.html',{"rootUrl":rootUrl,'ms':ms,'Schemes':'Schemes'})
+
 def Schemes(request):
-    context={}
+    mSchemes = M_Schemes.objects.all()
+    context={'Schemes':'Schemes','msa':mSchemes,'rootUrl':rootUrl}
     return render(request,"app/Schemes.html",context)
 
 def Quick_Links(request):

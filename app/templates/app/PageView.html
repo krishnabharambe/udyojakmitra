@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if ms %}
+<div class="my-4"><img src="{{rootUrl}}{{ms.image.url}}" class="img-fluid" alt=""></div>
+{{ms.title}}
+{{ms.pageContent|safe}}
+{% if ms.document4 %} <a class="" href="{{rootUrl}}{{ms.document4.url}}">Link</a> {% endif %}
+
+
+{% else %}
+<p>No Content Found</p>
+{% endif %}
+{% endblock content %}
