@@ -13,4 +13,6 @@ urlpatterns = [
     path('Gallery/',views.Gallery,name='Gallery'),
     path('Contact_Us/',views.Contact_Us,name='Contact_Us'),
     path('Logins/',views.Logins,name='Logins'),
+    path('CustomersReg/',views.CustomersReg,name='CustomersReg'),
+    path('WorkerReg/',views.WorkerReg,name='WorkerReg'),
 ]

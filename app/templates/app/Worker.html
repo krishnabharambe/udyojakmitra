@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <div class="container-fluid my-4">
+        <h2>Worker Registration</h2>
+
+        <hr>
+        <form method="POST" action="{% url 'WorkerReg' %}">{% csrf_token %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="mb-3">
+                        <label for="" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" name="fullname" id="" aria-describedby="helpId"
+                            placeholder="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Contact</label>
+                        <input type="text" class="form-control" name="contact" id="" aria-describedby="helpId"
+                            placeholder="">
+
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-12">
+                    <div class="mb-3">
+                        <label for="" class="form-label">Address</label>
+                        <textarea class="form-control" name="address" id="" rows="5"></textarea>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-12">
+                    <div class="mb-3">
+                        <label for="" class="form-label">Gender</label>
+                        <select class="form-control" name="Gender" id="">
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 col-12">
+                    <div class="mb-3">
+                        <label for="" class="form-label">Date Of Birth</label>
+                        <input type="date" class="form-control" name="DOB" id="" aria-describedby="helpId"
+                            placeholder="">
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="mb-3">
+                        <label for="" class="form-label">State</label>
+                        <select class="form-select" name="StateID" id="">
+                            <option selected>Select one</option>
+                            {% for s in State %}
+                            <option value="{{s.id}}">{{s.Value}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="mb-3">
+                        <label for="" class="form-label">District</label>
+                        <select class="form-select" name="DistrictID" id="">
+                            <option selected>Select one</option>
+                            {% for D in District %}
+                            <option value="{{D.id}}">{{D.Value}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="mb-3">
+                        <label for="" class="form-label">Takula</label>
+                        <select class="form-select" name="TalukaID" id="">
+                            <option selected>Select one</option>
+                            {% for T in Taluka %}
+                            <option value="{{T.id}}">{{T.Value}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <div class="mb-3">
+                        <label for="" class="form-label">City/Village</label>
+                        <select class="form-select" name="CityVillageID" id="">
+                            <option selected>Select one</option>
+                            {% for CV in CityVillage %}
+                            <option value="{{CV.id}}">{{CV.Value}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Register</button>
+
+        </div>
+    </form>
+    </div>
+
+{% endblock content %}
