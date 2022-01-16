@@ -1,7 +1,10 @@
+import email
 from django.shortcuts import redirect, render, resolve_url
+from django.contrib import messages
 from .models import BusinessOwner, DistrictHandler, ImageSlider, IndiPageContent, M_Operator, TalukaHandler, WorkerLoan, appDocuments as M_appDocuments, Advertisements as M_Advertisements, Schemes as M_Schemes, StateIND, District, Taluka, CityVillage, Worker, Customers, Collaborations, HomeImage
 # Create your views here.
-rootUrl = "http://127.0.0.1:8000"
+# rootUrl = "http://127.0.0.1:8000"
+rootUrl = "http://udyojakmitra.org"
 
 StateINDInst = StateIND.objects.filter(Status="Active")
 DistrictInst = District.objects.filter(Status="Active")
@@ -85,21 +88,36 @@ def CustomersReg(request):
                'CityVillage': CityVillageInst}
 
     if request.method=='POST':
-        cvs = Customers()
-        cvs.fullname = request.POST['fullname']
-        cvs.address = request.POST['address']
-        cvs.contact = request.POST['contact']
-        cvs.Gender = request.POST['Gender']
-        cvs.DOB = request.POST['DOB']
-        cvs.StateID = StateIND.objects.get(id=request.POST['StateID'])
-        cvs.DistrictID = District.objects.get(id=request.POST['DistrictID'])
-        cvs.TalukaID = Taluka.objects.get(id=request.POST['TalukaID'])
-        cvs.CityVillageID = CityVillage.objects.get(id=request.POST['CityVillageID'])
-        cvs.save()
-        return redirect('index')
+        if request.POST['pass_1'] == request.POST['pass_2']:
+            cvsTest = Customers.objects.filter(email =request.POST['email'])
+            if cvsTest :
+                return redirect('CustomersRegFailure', email = request.POST['email'])
+            else:
+                cvs = Customers()
+                cvs.fullname = request.POST['fullname']
+                cvs.address = request.POST['address']
+                cvs.contact = request.POST['contact']
+                cvs.Gender = request.POST['Gender']
+                cvs.DOB = request.POST['DOB']
+                cvs.email = request.POST['email']
+                cvs.StateID = StateIND.objects.get(id=request.POST['StateID'])
+                cvs.DistrictID = District.objects.get(id=request.POST['DistrictID'])
+                cvs.TalukaID = Taluka.objects.get(id=request.POST['TalukaID'])
+                cvs.CityVillageID = CityVillage.objects.get(id=request.POST['CityVillageID'])
+                cvs.save()
+                return redirect('CustomersRegSuccess', id=cvs.id)
+        else :
+            messages.error(request,"Password doesn't match, Please try again")
+            return redirect('CustomersReg')
     else:
         return render(request, "app/Customers.html", context)
 
+def CustomersRegSuccess(request, id):
+    ws = Customers.objects.get(id=id)
+    return render(request, "app/Success/CustomerRegS.html",{'ws':ws})
+
+def CustomersRegFailure(request, email):
+    return render(request, "app/Success/CustomerRegF.html",{'email':email})
 
 def WorkerReg(request):
     context = {'State': StateINDInst,
@@ -131,9 +149,14 @@ def WorkerReg(request):
         cvs.Ans4 = request.POST['Ans4']
         cvs.Ans5 = request.POST['Ans5']
         cvs.save()
-        return redirect('index')
+        return redirect('WorkerRegSuccess', id=cvs.id)
     else:
         return render(request, "app/Worker.html", context)
+
+
+def WorkerRegSuccess(request, id):
+    ws = Worker.objects.get(id=id)
+    return render(request, "app/Success/WorkerRegS.html",{'ws':ws})
 
 
 
@@ -171,10 +194,14 @@ def WorkerLoanReg(request):
         cvs.Ans8 = request.POST['Ans8']
         cvs.Ans9 = request.POST['Ans9']
         cvs.save()
-        return redirect('index')
+        return redirect('WorkerLoanSuccess', id=cvs.id)
     else:
         return render(request, "app/WorkerLoan.html", context)
 
+
+def WorkerLoanSuccess(request, id):
+    ws = WorkerLoan.objects.get(id=id)
+    return render(request, "app/Success/WorkerLoanRegS.html",{'ws':ws})
 
 def BusinessOwnerReg(request):
     context = {'State': StateINDInst,
@@ -201,9 +228,13 @@ def BusinessOwnerReg(request):
         cvs.IFSC_Code = request.POST['IFSC_Code']
         cvs.IFSC_Branch = request.POST['IFSC_Branch']
         cvs.save()
-        return redirect('index')
+        return redirect('BusinessOwnerRegSuccess', id=cvs.id)
     else:
         return render(request, "app/BusinessOwnerReg.html", context)
+
+def BusinessOwnerRegSuccess(request, id):
+    ws = BusinessOwner.objects.get(id=id)
+    return render(request, "app/Success/BusinessOwnerRegS.html",{'ws':ws})
 
 
 def DistrictHandlerReg(request):
@@ -230,11 +261,13 @@ def DistrictHandlerReg(request):
         cvs.IFSC_Code = request.POST['IFSC_Code']
         cvs.IFSC_Branch = request.POST['IFSC_Branch']
         cvs.save()
-        return redirect('index')
+        return redirect('DistrictHandlerRegSuccess', id=cvs.id)
     else:
         return render(request, "app/DistrictHandler.html", context)
 
-
+def DistrictHandlerRegSuccess(request, id):
+    ws = DistrictHandler.objects.get(id=id)
+    return render(request, "app/Success/DistrictHandlerRegS.html",{'ws':ws})
 
 def TalukaHandlerReg(request):
     context = {'State': StateINDInst,
@@ -260,10 +293,13 @@ def TalukaHandlerReg(request):
         cvs.IFSC_Code = request.POST['IFSC_Code']
         cvs.IFSC_Branch = request.POST['IFSC_Branch']
         cvs.save()
-        return redirect('index')
+        return redirect('TalukaHandlerRegSuccess', id=cvs.id)
     else:
         return render(request, "app/TalukaHandler.html", context)
 
+def TalukaHandlerRegSuccess(request, id):
+    ws = TalukaHandler.objects.get(id=id)
+    return render(request, "app/Success/TalukaHandlerRegS.html",{'ws':ws})
 
 def OperatorReg(request):
     context = {'State': StateINDInst,
@@ -289,10 +325,13 @@ def OperatorReg(request):
         cvs.IFSC_Code = request.POST['IFSC_Code']
         cvs.IFSC_Branch = request.POST['IFSC_Branch']
         cvs.save()
-        return redirect('index')
+        return redirect('OperatorRegSuccess', id=cvs.id)
     else:
         return render(request, "app/Operator.html", context)
 
+def OperatorRegSuccess(request, id):
+    ws = M_Operator.objects.get(id=id)
+    return render(request, "app/Success/OperatorRegS.html",{'ws':ws})
 
 
 

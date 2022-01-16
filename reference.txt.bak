@@ -1,0 +1,74 @@
+https://www.youtube.com/watch?v=2hM5viLMJpA&ab_channel=JamesGrimshaw
+
+https://dev.to/janjibdev/problem-with-react-router-app-and-github-pages-lij
+
+https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/
+
+https://stackoverflow.com/questions/42182577/is-it-possible-to-use-dotenv-in-a-react-project
+
+https://mui.com/components/material-icons/
+
+be1922
+
+source /home/gj82r7umb7ss/virtualenv/udyojakmitra/3.7/bin/activate && cd /home/gj82r7umb7ss/udyojakmitra
+
+
+1. Super Admin
+2. Admin/Site Operator
+3. Operator(district and Taluka Both)
+4. Handler(district and Taluka Both)
+5. Busniess Owner
+6. Worker
+7. Customer
+
+
+Home - Add Workers and Customer Regisration
+		-Display in admin panel
+
+
+UM.swatix@protonmail.com
+Krishna@123
+
+
+http://swatix.pythonanywhere.com/
+
+Super Admin - http://swatix.pythonanywhere.com/admin
+username - visa
+password -visa
+
+Admin - http://swatix.pythonanywhere.com/myadmin
+No Auth yet
+
+
+
+Simple Worker
+1. Since how long are you doing this work?
+2. what is your annual turnover?
+3. Do you do cashless transactions?
+4. Are you wiling to take a contract? what is the maximum contract amount?
+5. How early can you serve the customer after receiving a call or message?
+
+Worker Loan
+1. Have you taken a loan previously?
+2. Do you need loan?
+3. Have you filed your ITR for last 3 years?
+4. Do you have your CIBIL report?
+5. Does your bank send you the bank statement on email?
+6. last 1 year turnover?
+7. Do you have Udyog Aadhar Shop Act License?
+8. Do you live on rent? Do you have a rent agreement?
+9. For 1 Lakh Rupees to 25 Lakh Rupees loan, do you have a project report and a training done?
+
+
+1. you can login with your email and password after successful registration
+2. you can only view data of your district
+3. never share your account credentials with anyone
+4. we will never call you and ask for your personal details 
+
+
+all Login-
+auth and Auth
+
+
+
+

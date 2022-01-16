@@ -3,7 +3,8 @@ from django.shortcuts import redirect, render
 
 from app.models import IndiPageContent, appDocuments as M_appDocuments, Advertisements as M_Advertisements, Schemes as M_Schemes, Collaborations as M_Collaborations
 
-rootUrl = "http://127.0.0.1:8000"
+# rootUrl = "http://127.0.0.1:8000"
+rootUrl = "http://udyojakmitra.org"
 # Create your views here.
 def Backindex(request):
     return render(request, 'backapp/index.html')

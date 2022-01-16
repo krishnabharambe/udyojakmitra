@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="mt-4 p-5 bg-danger text-white rounded">
+        <h2>Hi {{email}}, Your registration is failed</h2>
+      <p>{{email}} is already registered with Us.</p> 
+    </div>
+  </div>
+{% endblock content %}

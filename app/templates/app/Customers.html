@@ -94,8 +94,45 @@
                         </select>
                     </div>
                 </div>
-            </div>
 
+                <hr />
+
+                <div class="col-md-6 col-12">
+                    <div class="mb-3">
+                        <label for="" required class="form-label">Email Address</label>
+                        <input required type="email" class="form-control" name="email" id="" aria-describedby="helpId"
+                            placeholder="">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="" required class="form-label">Password</label>
+                        <input required type="password" class="form-control" name="pass_1" id="" aria-describedby="helpId"
+                            placeholder="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="" required class="form-label">Confirm Password</label>
+                        <input required type="password" class="form-control" name="pass_2" id="" aria-describedby="helpId"
+                            placeholder="">
+                    </div>
+
+                </div>
+                <div class="col-md-6 col-12">
+                    <h5>Terms and Coditions</h5>
+                    <ol class="list-group list-group-numbered mt-3">
+                        <li class="list-group-item">You can login with your email and password after successful registration</li>
+                        <li class="list-group-item">You can only view data of your district</li>
+                        <li class="list-group-item">Never share your account credentials with anyone</li>
+                        <li class="list-group-item">We will never call you and ask for your personal details </li>
+                        <li class="list-group-item">Never share your bank details with people who claim to be from Udyojak Mitra Group </li>
+                      </ol>
+                </div>
+
+            </div>
+            {% if messages %}
+            {% for message in messages %}
+                    <div class="alert {% if message.tags %}alert-{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}danger{% else %}{{ message.tags }}{% endif %}{% endif %}" role="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
 
             <button type="submit" class="btn btn-primary">Register</button>
 

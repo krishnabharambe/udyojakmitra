@@ -78,9 +78,27 @@
     <br />
 
     <div class="list-group">
-      <a href="{% url 'WorkerReg' %}" class="list-group-item list-group-item-action"
-        ><b>Workers Registration</b></a
-      >
+
+      <a
+      href="{% url 'DistrictHandlerReg' %}"
+      class="list-group-item list-group-item-action"
+      ><b>District Handler Registration</b>
+    </a>
+
+    <a
+    href="{% url 'TalukaHandlerReg' %}"
+    class="list-group-item list-group-item-action"
+    ><b>Taluka Handler Registration</b>
+  </a>
+
+  <a
+  href="{% url 'OperatorReg' %}"
+  class="list-group-item list-group-item-action"
+  ><b>Operator Registration</b>
+</a>
+
+
+
       <a href="{% url 'BusinessOwnerReg' %}" class="list-group-item list-group-item-action"
       ><b>Business Owner Registration</b></a
     >
@@ -88,39 +106,34 @@
       <a href="{% url 'WorkerLoanReg' %}" class="list-group-item list-group-item-action"
       ><b>Workers Loan Registration</b></a
     >
+    <a href="{% url 'WorkerReg' %}" class="list-group-item list-group-item-action"
+    ><b>Workers Registration</b></a
+  >
       <a
         href="{% url 'CustomersReg' %}"
         class="list-group-item list-group-item-action"
         ><b>Customers Registration</b>
       </a>
 
-      <a
-        href="{% url 'DistrictHandlerReg' %}"
-        class="list-group-item list-group-item-action"
-        ><b>District Handler Registration</b>
-      </a>
-
-      <a
-      href="{% url 'TalukaHandlerReg' %}"
-      class="list-group-item list-group-item-action"
-      ><b>Taluka Handler Registration</b>
-    </a>
-
-    <a
-    href="{% url 'OperatorReg' %}"
-    class="list-group-item list-group-item-action"
-    ><b>Operator Registration</b>
-  </a>
+  
     </div>
+
+
+  
+
+  </div>
+  </div>
+<br />
+<br />
 
 
 {% for bl in cbl %}
     <div class="my-3">
       <div class="row featurette">
-          <div class="col-md-5">
+          <div class="col-md-3">
               <img class="img-fluid" src="{{rootUrl}}{{bl.image.url}}" alt="New York">
           </div>
-          <div class="col-md-7">
+          <div class="col-md-9">
                <h2 class="featurette-heading">{{bl.name}}</h2>
               <p class="">{{bl.pageContent|safe}}</p>
           </div>
@@ -129,12 +142,6 @@
 
 {% endfor %}
 
-  
-
-  </div>
-  </div>
-<br />
-<br />
 
 <h4>Government Schemes</h4>
   <div class="row">
@@ -142,7 +149,7 @@
       <div class="list-group">
         {% for ms in mgsa %}
   
-        <a href="{% url 'IndexAdvertisements' id=ms.id %}" class="list-group-item list-group-item-action">{{ms.title}}</a>
+        <a href="{% url 'IndexSchemes' id=ms.id %}" class="list-group-item list-group-item-action">{{ms.title}}</a>
   
         {% endfor %}
       </div>

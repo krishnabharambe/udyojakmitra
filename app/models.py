@@ -139,6 +139,8 @@ class Customers(models.Model):
     contact = models.CharField(max_length=256)
     Gender = models.CharField(max_length=256)
     DOB = models.CharField(max_length=256)
+    email = models.CharField(max_length=512)
+    password = models.CharField(max_length=1000)
     StateID = models.ForeignKey(StateIND, on_delete=models.CASCADE)
     DistrictID = models.ForeignKey(District, on_delete=models.CASCADE)
     TalukaID = models.ForeignKey(Taluka, on_delete=models.CASCADE)

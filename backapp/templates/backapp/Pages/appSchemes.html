@@ -45,7 +45,7 @@
         <tr>
             <td scope="row">{{forloop.counter}}</td>
             <td>{{Scheme.title}}</td>
-            <td><a href="{{rootUrl}}{{Scheme.document4.url}}">View</a></td>
+            <td>{% if Scheme.document4 %}<a href="{{rootUrl}}{{Scheme.document4.url}}">View</a>{% endif %}</td>
             <td><a href="{{rootUrl}}{{Scheme.image.url}}">View</a></td>
             <td>
                 <a class="text-white btn btn-warning" data-bs-toggle="modal"
@@ -87,7 +87,7 @@
                                         <label for="" class="form-label">Document</label>
                                         <input type="file" class="form-control" name="document4" id="" placeholder=""
                                             aria-describedby="fileHelpId">
-                                            <small> <a href="{{rootUrl}}{{Scheme.document4.url}}">{{rootUrl}}{{Scheme.document4.url}}</a></small>
+                                          {% if Scheme.document4 %} <small> <a href="{{rootUrl}}{{Scheme.document4.url}}">{{rootUrl}}{{Scheme.document4.url}}</a></small>{% endif %}  
                                     </div>
                                     <div class="mb-3">
                                         <button type="submit" name="EditScheme" class="btn btn-primary my-1 text-white">Save And Publish</button>
@@ -132,7 +132,7 @@
                                     <a href="{{rootUrl}}{{Scheme.image.url}}">{{rootUrl}}{{Scheme.image.url}}</a>
                                     <br />
                                     <small>Documents</small>
-                                    <a href="{{rootUrl}}{{Scheme.document4.url}}">{{rootUrl}}{{Scheme.document4.url}}</a>
+                                    {% if Scheme.document4 %}<a href="{{rootUrl}}{{Scheme.document4.url}}">{{rootUrl}}{{Scheme.document4.url}}</a>{% endif %}
                                     <br />
                                     <br />
                                     <button type="submit" name="deleteScheme" class="btn btn-danger text-white">Save

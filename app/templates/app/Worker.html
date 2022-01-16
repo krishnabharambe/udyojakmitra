@@ -36,7 +36,9 @@
             <select class="form-select" name="TalukaID" required id="">
               <option selected>Select one</option>
               {% for T in Taluka %}
+                
               <option value="{{T.id}}">{{T.Value}}</option>
+
               {% endfor %}
             </select>
           </div>

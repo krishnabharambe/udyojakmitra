@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-3">
+    <div class="mt-4 p-5 bg-primary text-white rounded">
+        <h2>Hi {{ws.fullname}}, Your registration is Complete</h2>
+      <p>Team will get back to you soon.</p> 
+    </div>
+
+    <div class="my-4">
+    
+State - {{ws.StateID}}
+<br />
+District - {{ws.DistrictID}}
+<br />
+Taluka - {{ws.TalukaID}}
+<br />
+CityVillage - {{ws.CityVillageID}}
+<br />
+fullname - {{ws.fullname}}
+<br />
+BusinessName - {{ws.BusinessName}}
+<br />
+WorkType - {{ws.WorkType}}
+<br />
+AadharNo - {{ws.AadharNo}}
+<br />
+PanNo - {{ws.PanNo}}
+<br />
+Contact - {{ws.Contact}}
+<br />
+email - {{ws.email}}
+<br />
+Address - {{ws.Address}}
+<br />
+accountHolderName - {{ws.accountHolderName}}
+<br />
+accountNo - {{ws.accountNo}}
+<br />
+IFSC_Code - {{ws.IFSC_Code}}
+<br />
+IFSC_Branch - {{ws.IFSC_Branch}}
+<br />
+
+</div>
+  </div>
+{% endblock content %}
