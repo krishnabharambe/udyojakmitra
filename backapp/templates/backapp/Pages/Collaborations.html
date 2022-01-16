@@ -1,0 +1,140 @@
+{% extends 'backbase.html' %}
+{% block content %}
+<H2>Manage - Collaborations</H2>
+
+<form enctype="multipart/form-data" action="{% url 'Collaborations' %}" method="POST">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label for="" class="form-label">Full Name</label>
+        <input type="text" class="form-control" name="name" id="" required aria-describedby="helpId" placeholder="">
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">Profile Iamge</label>
+        <input type="file" class="form-control" name="image" required id="" placeholder=""
+            aria-describedby="fileHelpId">
+    </div>
+    <div class="mb-3">
+        <textarea class="form-control" name="pageContent" id="your_summernote" rows="10"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <button type="submit" name="addCollaboration" class="btn btn-primary my-1 text-white">Save And Publish</button>
+    </div>
+</form>
+
+<br />
+<table class="table table-striped table-bordered table-inverse table-responsive">
+    <thead class="thead-inverse">
+        <tr>
+            <th>Sr.No</th>
+            <th>Full Name</th>
+            <th>Profile</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cbl in MCBL %}
+        <tr>
+            <td scope="row">{{forloop.counter}}</td>
+            <td>{{cbl.name}}</td>
+            <td><a href="{{rootUrl}}{{cbl.image.url}}">View</a></td>
+            <td>
+                <a class="text-white btn btn-warning" data-bs-toggle="modal"
+                data-bs-target="#EditModal{{cbl.id}}">Edit</a>
+
+
+                <div class="modal fade" id="EditModal{{cbl.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+
+
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Edit - {{cbl.name}}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form enctype="multipart/form-data" action="{% url 'Collaborations' %}" method="POST">
+                                    {% csrf_token %}
+                        <input type="hidden" name="cblid" value={{cbl.id}}>
+                                
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Full Name</label>
+                                        <input type="text" class="form-control" name="name" value="{{cbl.name}}" id="" required aria-describedby="helpId" placeholder="">
+                                    </div>
+                                
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Profile Image</label>
+                                        <input type="file" class="form-control" name="image" id="" placeholder=""
+                                            aria-describedby="fileHelpId">
+                                            <small><a href="{{rootUrl}}{{cbl.image.url}}">{{rootUrl}}{{cbl.image.url}}</a></small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <textarea class="form-control your_summernote" name="pageContent" id="your_summernote" rows="10">{{cbl.pageContent}}</textarea>
+                                    </div>
+                                
+                                    <div class="mb-3">
+                                        <button type="submit" name="editCollaboration" class="btn btn-primary my-1 text-white">Save And Publish</button>
+                                        <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancel</button>
+                                    </div>
+                                </form>
+                               
+                                
+                            </div>
+                        </div>
+                    </div>
+             
+            </div>
+
+
+                <a class="text-white btn btn-danger" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal{{cbl.id}}">Delete</a>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal{{cbl.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <form method="POST" action="{% url 'Collaborations' %}">{% csrf_token %}
+
+                        <input type="hidden" name="cblid" value={{cbl.id}}>
+
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p class="text-danger">Sure you want to delete?</p>
+                                    {{cbl.name}}
+                                    <br />
+                                    <br />
+                                    {{cbl.pageContent|safe}}
+                                    <br />
+                                    <br />
+                                    <small>Banner </small>
+                                    <a href="{{rootUrl}}{{cbl.image.url}}">{{rootUrl}}{{cbl.image.url}}</a>
+                                    <br />
+                                  
+                                    <br />
+                                    <button type="submit" name="deleteCollaboration" class="btn btn-danger text-white">Save
+                                        changes and Delete</button>       <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+</table>
+
+{% endblock content %}

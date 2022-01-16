@@ -15,4 +15,9 @@ urlpatterns = [
     path('Logins/',views.Logins,name='Logins'),
     path('CustomersReg/',views.CustomersReg,name='CustomersReg'),
     path('WorkerReg/',views.WorkerReg,name='WorkerReg'),
+    path("WorkerLoanReg/", views.WorkerLoanReg, name="WorkerLoanReg"),
+    path("BusinessOwnerReg/", views.BusinessOwnerReg, name="BusinessOwnerReg"),
+    path("DistrictHandlerReg/", views.DistrictHandlerReg, name="DistrictHandlerReg"),
+    path("TalukaHandlerReg/", views.TalukaHandlerReg, name="TalukaHandlerReg"),
+    path("OperatorReg/", views.OperatorReg, name="OperatorReg"),
 ]

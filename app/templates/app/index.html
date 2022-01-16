@@ -1,36 +1,163 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<br />
+<div class="row">
+  <div class="col-md-3 border border-red">
+    <div class="list-group">
+      {% for ms in msa %}
 
-{% block content %}
-<Slider>
-    <br />
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <a href="{% url 'IndexAdvertisements' id=ms.id %}" class="list-group-item list-group-item-action">{{ms.title}}</a>
+
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <Slider>
+     
+      <div
+        id="carouselExampleIndicators"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
         <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
         </div>
         <div class="carousel-inner">
-            {% for isa in IS %}
-            <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
-                <img src="{{ isa.image.url}}" class="d-block w-100" alt="{{isa.title}}">
-            </div>
-            {% endfor %}
+          {% for isa in IS %}
+          <div
+            class="carousel-item {% if forloop.counter == 1 %} active {% endif %}"
+          >
+            <img
+              src="{{ isa.image.url}}"
+              class="d-block w-100"
+              alt="{{isa.title}}"
+            />
+          </div>
+          {% endfor %}
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"
+        >
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"
+        >
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-</Slider>
+    </Slider>
 
-<div class="list-group">
-  <a href="{% url 'WorkerReg' %}" class="list-group-item list-group-item-action">Workers Registration</a>
-  <a href="{% url 'CustomersReg' %}" class="list-group-item list-group-item-action">Customers Registration </a>
+    <br />
+
+    <div class="list-group">
+      <a href="{% url 'WorkerReg' %}" class="list-group-item list-group-item-action"
+        ><b>Workers Registration</b></a
+      >
+      <a href="{% url 'BusinessOwnerReg' %}" class="list-group-item list-group-item-action"
+      ><b>Business Owner Registration</b></a
+    >
+
+      <a href="{% url 'WorkerLoanReg' %}" class="list-group-item list-group-item-action"
+      ><b>Workers Loan Registration</b></a
+    >
+      <a
+        href="{% url 'CustomersReg' %}"
+        class="list-group-item list-group-item-action"
+        ><b>Customers Registration</b>
+      </a>
+
+      <a
+        href="{% url 'DistrictHandlerReg' %}"
+        class="list-group-item list-group-item-action"
+        ><b>District Handler Registration</b>
+      </a>
+
+      <a
+      href="{% url 'TalukaHandlerReg' %}"
+      class="list-group-item list-group-item-action"
+      ><b>Taluka Handler Registration</b>
+    </a>
+
+    <a
+    href="{% url 'OperatorReg' %}"
+    class="list-group-item list-group-item-action"
+    ><b>Operator Registration</b>
+  </a>
+    </div>
+
+
+{% for bl in cbl %}
+    <div class="my-3">
+      <div class="row featurette">
+          <div class="col-md-5">
+              <img class="img-fluid" src="{{rootUrl}}{{bl.image.url}}" alt="New York">
+          </div>
+          <div class="col-md-7">
+               <h2 class="featurette-heading">{{bl.name}}</h2>
+              <p class="">{{bl.pageContent|safe}}</p>
+          </div>
+      </div>
+  </div>
+
+{% endfor %}
+
+  
+
+  </div>
+  </div>
+<br />
+<br />
+
+<h4>Government Schemes</h4>
+  <div class="row">
+    <div class="col-md-12 border border-red">
+      <div class="list-group">
+        {% for ms in mgsa %}
+  
+        <a href="{% url 'IndexAdvertisements' id=ms.id %}" class="list-group-item list-group-item-action">{{ms.title}}</a>
+  
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <br />
+
+<img src="{{HI.image.url}}" class="img-fluid" alt="">
+
+<br />
+<br />
+<br />
+<br />
+
 {% endblock content %}

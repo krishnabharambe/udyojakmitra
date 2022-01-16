@@ -1,0 +1,220 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container-fluid my-4">
+  <h2>Business Owner Registration</h2>
+
+  <hr />
+  <form method="POST" action="{% url 'BusinessOwnerReg' %}">
+    {% csrf_token %}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-12">
+          <div class="mb-3">
+            <label for="" class="form-label">State<span class="text-danger"> *</span> </label>
+            <select class="form-select" name="StateID" required id="">
+              <option selected>Select one</option>
+              {% for s in State %}
+              <option value="{{s.id}}">{{s.Value}}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="col-md-3 col-12">
+          <div class="mb-3">
+            <label for="" class="form-label">District<span class="text-danger"> *</span> </label>
+            <select class="form-select" name="DistrictID" required id="">
+              <option selected>Select one</option>
+              {% for D in District %}
+              <option value="{{D.id}}">{{D.Value}}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="col-md-3 col-12">
+          <div class="mb-3">
+            <label for="" class="form-label">Takula<span class="text-danger"> *</span> </label>
+            <select class="form-select" name="TalukaID" required id="">
+              <option selected>Select one</option>
+              {% for T in Taluka %}
+              <option value="{{T.id}}">{{T.Value}}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="col-md-3 col-12">
+          <div class="mb-3">
+            <label for="" class="form-label">City/Village<span class="text-danger"> *</span> </label>
+            <select class="form-select" name="CityVillageID" required id="">
+              <option selected>Select one</option>
+              {% for CV in CityVillage %}
+              <option value="{{CV.id}}">{{CV.Value}}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-12">
+          <div class="mb-3">
+            <label for="" class="form-label">Full Name<span class="text-danger"> *</span> </label>
+            <input
+              type="text"
+              class="form-control"
+              name="fullname"
+              id=""
+              aria-describedby="helpId"
+              placeholder=""
+              required
+            />
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="mb-3">
+            <label for="" class="form-label">Business Name<span class="text-danger"> *</span> </label>
+            <input
+              type="text"
+              class="form-control"
+              name="BusinessName"
+              required
+              id=""
+              aria-describedby="helpId"
+              placeholder=""
+            />
+          </div>
+        </div>
+
+        <div class="col-md-6 col-12">
+          <div class="mb-3">
+            <label for="" class="form-label">Work Type<span class="text-danger"> *</span> </label>
+            <input
+              type="text"
+              class="form-control"
+              name="WorkType"
+              required
+              id=""
+              aria-describedby="helpId"
+              placeholder=""
+            />
+          </div>
+        </div>
+
+        <div class="col-md-6 col-12">
+          <div class="mb-3">
+            <label for="" class="form-label">Aadhar No<span class="text-danger"> *</span> </label>
+            <input
+              type="text"
+              required
+              class="form-control"
+              name="AadharNo"
+              id=""
+              aria-describedby="helpId"
+              placeholder=""
+            />
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="mb-3">
+            <label for="" class="form-label">Pan No<span class="text-danger"> *</span> </label>
+            <input
+            required
+              type="text"
+              class="form-control"
+              name="PanNo"
+              id=""
+              aria-describedby="helpId"
+              placeholder=""
+            />
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="mb-3">
+            <label for="" class="form-label">Contact<span class="text-danger"> *</span> </label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              name="Contact"
+              id=""
+              aria-describedby="helpId"
+              placeholder=""
+            />
+          </div>
+        </div>
+
+        <div class="col-md-12 col-12">
+          <div class="mb-3">
+            <label for="" class="form-label">Address<span class="text-danger"> *</span> </label>
+            <textarea
+              class="form-control"
+              name="Address"
+              id=""
+              rows="5"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-12">
+          <div class="mb-3">
+            <label for="" class="form-label">Account Holder Name<span class="text-danger"> *</span> </label>
+            <input
+              type="text"
+              class="form-control"
+              name="accountHolderName"
+              id=""
+              required
+              aria-describedby="helpId"
+              placeholder=""
+            />
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="mb-3">
+            <label for="" class="form-label">Account No<span class="text-danger"> *</span> </label>
+            <input
+              type="text"
+              class="form-control"
+              name="accountNo"
+              required
+              id=""
+              aria-describedby="helpId"
+              placeholder=""
+            />
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="mb-3">
+            <label for="" class="form-label">IFSC Code<span class="text-danger"> *</span> </label>
+            <input
+              type="text"
+              required
+              class="form-control"
+              name="IFSC_Code"
+              id=""
+              aria-describedby="helpId"
+              placeholder=""
+            />
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="mb-3">
+            <label for="" class="form-label">IFSC Branch<span class="text-danger"> *</span> </label>
+            <input
+              type="text"
+              required
+              class="form-control"
+              name="IFSC_Branch"
+              id=""
+              aria-describedby="helpId"
+              placeholder=""
+            />
+          </div>
+        </div>
+
+
+      </div>
+
+      <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+  </form>
+</div>
+
+{% endblock content %}

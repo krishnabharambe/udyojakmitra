@@ -6,5 +6,6 @@ urlpatterns = [
     path('Pages/appDocuments',views.appDocuments,name='appDocuments'),
     path('Pages/appAdvertisements',views.appAdvertisements,name='appAdvertisements'),
     path('Pages/appSchemes',views.appSchemes,name='appSchemes'),
+    path('Pages/Collaborations',views.Collaborations,name='Collaborations'),
 ]
 

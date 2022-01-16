@@ -1,6 +1,7 @@
+import re
 from django.shortcuts import redirect, render
 
-from app.models import IndiPageContent, appDocuments as M_appDocuments, Advertisements as M_Advertisements, Schemes as M_Schemes
+from app.models import IndiPageContent, appDocuments as M_appDocuments, Advertisements as M_Advertisements, Schemes as M_Schemes, Collaborations as M_Collaborations
 
 rootUrl = "http://127.0.0.1:8000"
 # Create your views here.
@@ -105,3 +106,31 @@ def appAdvertisements(request):
 
     else:
         return render(request, 'backapp/Pages/appAdvertisements.html',{"rootUrl":rootUrl,'AAdvertisements':AAdvertisements})
+
+
+def Collaborations(request):
+    MCBL = M_Collaborations.objects.all()
+    if request.method == 'POST':
+        if 'addCollaboration' in request.POST:
+            cbl = M_Collaborations()
+            cbl.image = request.FILES['image']
+            cbl.name = request.POST['name']
+            cbl.pageContent = request.POST['pageContent']
+            cbl.save()
+            return redirect('Collaborations')
+        elif 'editCollaboration' in request.POST:
+            mcbl = M_Collaborations.objects.get(id=request.POST['cblid'])
+            if 'image' in request.FILES:
+                mcbl.image = request.FILES['image']
+            mcbl.name = request.POST['name']
+            mcbl.pageContent = request.POST['pageContent']
+            mcbl.save()
+            return redirect('Collaborations')
+        elif 'deleteCollaboration' in request.POST:
+            mcbl = M_Collaborations.objects.get(id=request.POST['cblid'])
+            mcbl.delete()
+            return redirect('Collaborations')
+        else:
+            return redirect('Collaborations')
+    else:
+        return render(request, 'backapp/Pages/Collaborations.html',{'MCBL':MCBL, "rootUrl":rootUrl})

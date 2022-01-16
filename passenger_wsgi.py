@@ -1,0 +1,1 @@
+from udyojakmitra.wsgi import application
