@@ -12,7 +12,7 @@
           <div class="mb-3">
             <label for="" class="form-label">State<span class="text-danger"> *</span> </label>
             <select class="form-select" name="StateID" required id="">
-              <option selected>Select one</option>
+              
               {% for s in State %}
               <option value="{{s.id}}">{{s.Value}}</option>
               {% endfor %}
@@ -23,7 +23,7 @@
           <div class="mb-3">
             <label for="" class="form-label">District<span class="text-danger"> *</span> </label>
             <select class="form-select" name="DistrictID" required id="">
-              <option selected>Select one</option>
+              
               {% for D in District %}
               <option value="{{D.id}}">{{D.Value}}</option>
               {% endfor %}
@@ -34,7 +34,7 @@
           <div class="mb-3">
             <label for="" class="form-label">Takula<span class="text-danger"> *</span> </label>
             <select class="form-select" name="TalukaID" required id="">
-              <option selected>Select one</option>
+              
               {% for T in Taluka %}
               <option value="{{T.id}}">{{T.Value}}</option>
               {% endfor %}
@@ -45,7 +45,7 @@
           <div class="mb-3">
             <label for="" class="form-label">City/Village<span class="text-danger"> *</span> </label>
             <select class="form-select" name="CityVillageID" required id="">
-              <option selected>Select one</option>
+              
               {% for CV in CityVillage %}
               <option value="{{CV.id}}">{{CV.Value}}</option>
               {% endfor %}

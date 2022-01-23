@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="my-4">
+      <h2>Workers</h2>
+    <br />
+
+    <table id="dataTableView" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>Name</th>
+                <th>Office/Business</th>
+                <th>Work</th>
+                <th>District</th>
+                <th>Taluka</th>
+                <th>City</th>
+                <th>Contact</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for w in wlist %}
+            <tr>
+                <td>forloop.counter</td>
+                <td>{{w.fullname}}</td>
+                <td>{{w.BusinessName}}</td>
+                <td>{{w.WorkType}}</td>
+                <td>{{w.DistrictID}}</td>
+                <td>{{w.TalukaID}}</td>
+                <td>{{w.CityVillageID}}</td>
+                <td>{{w.Contact}}</td>
+            </tr>
+            {% endfor %}
+           
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Sr.No</th>
+                <th>Name</th>
+                <th>Office/Business</th>
+                <th>Work</th>
+                <th>District</th>
+                <th>Taluka</th>
+                <th>City</th>
+                <th>Contact</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+{% endblock content %}

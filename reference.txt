@@ -12,6 +12,10 @@ be1922
 
 source /home/gj82r7umb7ss/virtualenv/udyojakmitra/3.7/bin/activate && cd /home/gj82r7umb7ss/udyojakmitra
 
+https://www.simicart.com/manifest-generator.html/
+
+
+https://www.bezkoder.com/axios-request/
 
 1. Super Admin
 2. Admin/Site Operator
@@ -66,13 +70,22 @@ Worker Loan
 4. we will never call you and ask for your personal details 
 
 
-all Login-
-auth and Auth-
-ui-
-tabular data display-
+all Login - 
+auth and Auth - 
+ui -
+tabular data display -
+
+
+Nothing lasts forever
+Modern thinking-modern change ...
 
 
 
+Operator
+-Dist
+-taluka
 
-
-
+District
+	-specfic Taluka only
+	-Busniess
+	-worker

@@ -76,7 +76,9 @@
     </Slider>
 
     <br />
-
+    {% if sessionInst %}
+ welcome - {{sessionInst}}
+    {% else %}
     <div class="list-group">
 
       <a
@@ -117,6 +119,10 @@
 
   
     </div>
+
+    {% endif %}
+
+
 
 
   

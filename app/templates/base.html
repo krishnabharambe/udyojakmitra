@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
     integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
@@ -19,6 +21,7 @@
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
 </head>
 
 <body>
@@ -64,7 +67,7 @@
             <!-- begin dropdown items -->
             <div class="dropdown-menu">
               <a class="dropdown-item" href="#">Online Loan</a>
-              <a class="dropdown-item" href="#">Workers List</a>
+              <a class="dropdown-item" href="{% url 'WorkersView' %}">Workers List</a>
             </div><!-- end dropdown items -->
           </div><!-- end dropdown menu -->
           <li class="nav-item">
@@ -75,9 +78,19 @@
           </li>
         </ul>
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          {% if sessionInst %}
+      
           <li class="nav-item">
-            <a class="nav-link" href="#">SignUp/Login</a>
+            <a class="nav-link" href="{% url 'profile' %}"><i class="fas fa-user-alt"> </i> Profile </a>
+          </li>     <li class="nav-item">
+            <a class="nav-link" href="{% url 'LogOut' %}">Logout</a>
+          </li>  
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'LoginPath' %}">SignUp/Login</a>
           </li>
+          {% endif %}
+
         </ul>
       </div>
     </div>
@@ -158,6 +171,8 @@
                 उद्योगमिञ डिजिटल बिझनेस <br />
                 D Wing, <br />
                 Hubtown countywoods tilekar nagar kondwa KHURD pune
+
+
                 </span>
               </li>
               
@@ -214,8 +229,9 @@
     <script>
       $(document).ready(function() {
           $(".your_summernote").summernote();
-          
+          $('#dataTableView').DataTable();
       });
+
   </script>
 </body>
 

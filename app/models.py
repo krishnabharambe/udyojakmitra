@@ -131,8 +131,6 @@ class Worker(models.Model):
     Que5 = models.CharField(max_length=1000, default="How early can you serve the customer after receiving a call or message?")
     Ans5 = models.CharField(max_length=1000)
     
-
-
 class Customers(models.Model):
     fullname = models.CharField(max_length=256)
     address = models.TextField()
@@ -145,7 +143,6 @@ class Customers(models.Model):
     DistrictID = models.ForeignKey(District, on_delete=models.CASCADE)
     TalukaID = models.ForeignKey(Taluka, on_delete=models.CASCADE)
     CityVillageID = models.ForeignKey(CityVillage, on_delete=models.CASCADE)
-
 
 class HomeImage(models.Model):
     image = models.ImageField(upload_to='HomeImage/images/')

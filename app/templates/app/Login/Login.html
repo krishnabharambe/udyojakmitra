@@ -1,0 +1,49 @@
+{% extends 'base.html' %} {% block content %}
+<h2>Login</h2>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+      <form class="my-4" action="{% url 'LoginPath' %}" method="POST"> {% csrf_token %}
+    <div class="mb-3">
+      <label for="" class="form-label">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        required
+        name="username"
+        id=""
+        aria-describedby="helpId"
+        placeholder=""
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="" class="form-label">Password</label>
+      <input
+        type="text"
+        class="form-control"
+        required
+        name="password"
+        id=""
+        aria-describedby="helpId"
+        placeholder=""
+      />
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Login Type</label>
+      <select class="form-control" name="LoginType" id="">
+        <option value="Customer_login">Customer</option>
+        <option value="Business_login">Business Owner</option>
+        <option value="Operator_login">Operator</option>
+        <option value="Worker_login">Worker</option>
+        <option value="TalukaHandler_login">Taluka Handler</option>
+        <option value="DistrictHandler_login">District Handler</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+  </div>
+  <div class="col-md-3"></div>
+</div>
+
+{% endblock content %}

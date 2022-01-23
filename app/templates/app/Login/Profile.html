@@ -1,0 +1,31 @@
+{% extends 'base.html' %} 
+{% block content %}
+<h2>Profile</h2>
+
+<br />
+
+fullname - {{cust.fullname}}
+<br />
+address - {{cust.address}}
+<br />
+contact - {{cust.contact}}
+<br />
+Gender - {{cust.Gender}}
+<br />
+DOB - {{cust.DOB}}
+<br />
+email - {{cust.email}}
+<br />
+State - {{cust.StateID}}
+<br />
+District - {{cust.DistrictID}}
+<br />
+Taluka - {{cust.TalukaID}}
+<br />
+CityVillage - {{cust.CityVillageID}}
+<br />
+Logintype - {{sessionTypeInst}}
+<br />
+<br />
+<br />
+{% endblock content %}
